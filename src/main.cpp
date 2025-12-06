@@ -1,3 +1,8 @@
-int main(){
-    return 0;
+#include <iostream>
+#include <array>
+#include "player.hpp"
+#include "plateau.hpp"
+
+int main() {
+    
 }
