@@ -2,4 +2,4 @@
 
 ## Description
 
-Un projet de jeu TicTacToe réalisé pour l'IMAC
+Un projet de jeu TicTacToe réalisé pour l'IMAC..
