@@ -4,6 +4,6 @@
 
 
 namespace Jeu {
-    void draw_game_board(const std::array<char, 9>&tab_char);
+    void draw_game_board( std::array<char, 9>&tab_char);
 
     }
