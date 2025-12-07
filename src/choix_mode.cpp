@@ -3,6 +3,7 @@
 #include"plateau.hpp"
 #include"player.hpp"
 
+namespace Jeu{
 bool mode_duo(){
     int choix{};
     while (choix!=1 || choix!=2){
@@ -10,4 +11,5 @@ bool mode_duo(){
     return choix==2;
 
 
+}
 }
