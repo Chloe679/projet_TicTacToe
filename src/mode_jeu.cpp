@@ -34,7 +34,7 @@ void mode_jeu(bool mode){
        Jeu::draw_game_board(grille); //affiche grille vide au début
       int case_choisie;
        //DEBUT JEU
-       while (! Jeu::fin_partie){
+       while (! Jeu::fin_partie_victoire(grille)&& ! Jeu::fin_partie_egalite(grille)){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // TOUR JOUEUR 1
@@ -51,14 +51,14 @@ void mode_jeu(bool mode){
 
         // AFFICHE NV GRILLE
          Jeu::draw_game_board(grille);
-         if (Jeu::fin_partie){
+         if (! Jeu::fin_partie_victoire(grille)&& ! Jeu::fin_partie_egalite(grille)){
             gagnant='1';
          }
          
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          // TOUR JOUEUR 2
 
-        if(!Jeu::fin_partie){// on fait jouer l'autre joueur
+        if(! Jeu::fin_partie_victoire(grille)&& ! Jeu::fin_partie_egalite(grille)){// on fait jouer l'autre joueur
           std::cout<<"Joueur 2, veuillez choisir un numero de case: "<<std::endl;
           std::cin>>case_choisie;
 
@@ -71,7 +71,7 @@ void mode_jeu(bool mode){
          std::cin>>case_choisie;}
             grille[case_choisie]=play2.symbol; //prends symbole
             Jeu::draw_game_board(grille);
-            if (Jeu::fin_partie){
+            if (! Jeu::fin_partie_victoire(grille)&& ! Jeu::fin_partie_egalite(grille)){
             gagnant='2';
 
         }
@@ -100,7 +100,7 @@ void mode_jeu(bool mode){
        //DEBUT JEU
          std::cout<<"Joueur 1, veuillez choisir un numero de case: "<<std::endl;
         std::cin>>case_choisie;
-       while (! Jeu::fin_partie){
+       while (! Jeu::fin_partie_victoire(grille)&& ! Jeu::fin_partie_egalite(grille)){
          while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' '){
          std::cout<<"La case est invalide ";
          std::cout<<"Joueur 1, veuillez choisir un numero de case: "<<std::endl;
@@ -109,24 +109,24 @@ void mode_jeu(bool mode){
 
         // AFFICHE NV GRILLE
          Jeu::draw_game_board(grille);
-         if (Jeu::fin_partie){
+         if (! Jeu::fin_partie_victoire(grille)&& ! Jeu::fin_partie_egalite(grille)){
             std::cout<<"Bravo, vous avez gagné"<<std::endl;
             break;
          }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // TOUR IA
-  if (! Jeu::fin_partie){
+  if (! Jeu::fin_partie_victoire(grille)&& ! Jeu::fin_partie_egalite(grille)){
          while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' '){
             std::srand(std::time(nullptr));
             case_choisie=std::rand() % 9;
          }
          grille[case_choisie]=ia.symbol; 
          Jeu::draw_game_board(grille);
-          if (Jeu::fin_partie){
+          if (! Jeu::fin_partie_victoire(grille)&& ! Jeu::fin_partie_egalite(grille)){
             std::cout<<"Vous avez perdu"<<std::endl;
 
         }
       }
    }
 }
-
+}
