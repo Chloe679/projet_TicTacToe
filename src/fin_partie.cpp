@@ -14,13 +14,14 @@ const int tab_victoire[8][6] ={
 bool fin_partie_victoire(std::array<char, 9>& grille){ //on prends le tab de la grille en cours
  for(auto &v : tab_victoire){
     if (grille[v[0]]==grille[v[1]] && grille[v[1]]==grille[v[2]] && grille[v[0]]!=' ' ){
+        
         return true;
     }
 }
     return false;
  
 }
-bool fin_partie_egalite(std::array<char, 9>& grille){
+bool grille_remplie(std::array<char, 9>& grille){ //On regarde si la grille est entierement remplie
     for (char c : grille){
         if (c==' '){
             return false;
