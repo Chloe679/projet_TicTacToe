@@ -3,7 +3,11 @@
 #include "player.hpp"
 #include "plateau.hpp"
 #include"mode_jeu.hpp"
+#include <windows.h>
+
+
 int main() {
-//Jeu::mode_duo();
-Jeu::mode_jeu();
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    Jeu::mode_jeu();
 }

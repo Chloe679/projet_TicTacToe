@@ -5,6 +5,7 @@
 #include <array>
 #include<cstdlib>
 #include<ctime>
+#
 
 namespace Jeu {
 
@@ -97,7 +98,7 @@ void mode_jeu() {
                 }
             }
             else {
-                std::cout << "La partie est terminée, Joueur " << gagnant << "a gagné" << std::endl;
+                std::cout << "La partie est terminée, " << gagnant << " a gagné" << std::endl;
             }
         
     }
@@ -116,30 +117,33 @@ void mode_jeu() {
         Jeu::draw_game_board(grille); //affiche grille vide au début
 
         // DEBUT JEU
-        std::cout << "Joueur 1, veuillez choisir un numero de case: " << std::endl;
-        std::cin >> case_choisie;
 
         while (!Jeu::fin_partie_victoire(grille) && !Jeu::grille_remplie(grille)) {
+            std::cout << play1.name << " (" << play1.symbol << ") - choisissez une case (1-9) : ";
+            std::cin >> case_choisie;
+            case_choisie--;
 
             while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' ') {
                 std::cout << "La case est invalide ";
-                std::cout << "Joueur 1, veuillez choisir un numero de case: " << std::endl;
+                std::cout <<play1.name <<"veuillez choisir un autre numero de case: " << std::endl;
                 std::cin >> case_choisie;
             }
 
             grille[case_choisie] = play1.symbol;
             Jeu::draw_game_board(grille);
 
-            if (!Jeu::fin_partie_victoire(grille) && !Jeu::grille_remplie(grille)) {
-                std::cout << "Bravo, vous avez gagné" << std::endl;
+            if (Jeu::fin_partie_victoire(grille)) {
+                std::cout << "Bravo, vous avez gagné " << std::endl;
                 break;
             }
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // TOUR IA
             if (!Jeu::fin_partie_victoire(grille) && !Jeu::grille_remplie(grille)) {
+                std::cout<<"Tour de l'IA"<<std::endl;
+                case_choisie = std::rand() % 9;
 
-                while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' ') {
+                while ( grille[case_choisie] != ' ') {
                     std::srand(std::time(nullptr));
                     case_choisie = std::rand() % 9;
                 }
@@ -147,10 +151,17 @@ void mode_jeu() {
                 grille[case_choisie] = ia.symbol;
                 Jeu::draw_game_board(grille);
 
-                if (!Jeu::fin_partie_victoire(grille) && !Jeu::grille_remplie(grille)) {
+                if (Jeu::fin_partie_victoire(grille)) {
                     std::cout << "Vous avez perdu" << std::endl;
                 }
             }
+            // REGARDE SI GRILLE REMPLIE
+            if (!Jeu::fin_partie_victoire(grille)){
+                if (Jeu::grille_remplie(grille)) {
+                    std::cout << "Fin du jeu, Il y a égalité";
+                }
+            }
+
         }
     }
 }
