@@ -11,7 +11,7 @@ namespace Jeu {
 
 void mode_jeu() {
     std::srand(std::time(nullptr));
-    char gagnant =' ';
+    std::string gagnant =" ";
     
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +47,7 @@ void mode_jeu() {
             // VERIFIER SI LA CASE EST LIBRE
             while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' ') {
                 std::cout << "La case est invalide ";
-                std::cout << "Joueur 1, veuillez choisir un numero de case: " << std::endl;
+                std::cout << play1.name<<" veuillez choisir un numero de case: " << std::endl;
                 std::cin >> case_choisie;
                 case_choisie--;
             }
@@ -59,7 +59,7 @@ void mode_jeu() {
 
             // STOP SI GAGNE
             if (fin_partie_victoire(grille)) {
-                gagnant = '1';
+                gagnant = play1.name;
                 break;
             }
             if (grille_remplie(grille)) {
@@ -79,7 +79,7 @@ void mode_jeu() {
                 // VERIFIER SI LA CASE EST LIBRE
                 while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' ') {
                     std::cout << "La case est invalide";
-                    std::cout << "Joueur 2, veuillez choisir autre numero de case: " << std::endl;
+                    std::cout << play2.name<<" veuillez choisir autre numero de case: " << std::endl;
                     std::cin >> case_choisie;
                     case_choisie--;
                 }
@@ -88,7 +88,7 @@ void mode_jeu() {
                 Jeu::draw_game_board(grille);
 
                 if (Jeu::fin_partie_victoire(grille)) {
-                    gagnant = '2';
+                    gagnant = play2.name;
                 }
             }
         }
