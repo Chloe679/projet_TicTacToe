@@ -5,12 +5,14 @@
 #include <array>
 #include<cstdlib>
 #include<ctime>
-#
+
 
 namespace Jeu {
 
 void mode_jeu() {
+    std::srand(std::time(nullptr));
     char gagnant =' ';
+    
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // MODE DUO
@@ -18,10 +20,9 @@ void mode_jeu() {
     if (Jeu::mode_duo() == 0) {
 
         // CREA 2 JOUEURS
-        std::cout << "joueur 1 demande::::";
+        std::cout<<"Joueur 1 ";
         Jeu::Player play1 = Jeu::create_player();
-
-        std::cout << "joueur 2 demande::::";
+        std::cout<<"Joueur 2 ";
         Jeu::Player play2 = Jeu::create_player();
 
         // CONFLIT SYMB
@@ -48,6 +49,7 @@ void mode_jeu() {
                 std::cout << "La case est invalide ";
                 std::cout << "Joueur 1, veuillez choisir un numero de case: " << std::endl;
                 std::cin >> case_choisie;
+                case_choisie--;
             }
 
             grille[case_choisie] = play1.symbol; //prends symbole
@@ -79,6 +81,7 @@ void mode_jeu() {
                     std::cout << "La case est invalide";
                     std::cout << "Joueur 2, veuillez choisir autre numero de case: " << std::endl;
                     std::cin >> case_choisie;
+                    case_choisie--;
                 }
 
                 grille[case_choisie] = play2.symbol; //prends symbole
@@ -108,6 +111,8 @@ void mode_jeu() {
     else {
 
         int case_choisie;
+        int case_choisie_ia;
+        int amelioration{};
         Jeu::Player play1 = Jeu::create_player();
         Jeu::Player ia;
         ia.name = "IA";
@@ -127,6 +132,7 @@ void mode_jeu() {
                 std::cout << "La case est invalide ";
                 std::cout <<play1.name <<"veuillez choisir un autre numero de case: " << std::endl;
                 std::cin >> case_choisie;
+                case_choisie--;
             }
 
             grille[case_choisie] = play1.symbol;
@@ -139,31 +145,39 @@ void mode_jeu() {
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // TOUR IA
-            if (!Jeu::fin_partie_victoire(grille) && !Jeu::grille_remplie(grille)) {
-                std::cout<<"Tour de l'IA"<<std::endl;
-                case_choisie = std::rand() % 9;
+    if (!Jeu::fin_partie_victoire(grille) && !Jeu::grille_remplie(grille)) {
+        std::cout << "Tour de l'IA" << std::endl;
 
-                while ( grille[case_choisie] != ' ') {
-                    std::srand(std::time(nullptr));
-                    case_choisie = std::rand() % 9;
-                }
+        // Utiliser variable locale coup_amelio
+        int coup_amelio = Jeu::amelioration(grille, ia);
 
-                grille[case_choisie] = ia.symbol;
-                Jeu::draw_game_board(grille);
+       
+if(coup_amelio == -1 || grille[coup_amelio] != ' '){ 
+    // coup aléatoire sur case libre
+    do {
+        case_choisie_ia = std::rand() % 9;
+    } while(grille[case_choisie_ia] != ' ');
+} else {
+    case_choisie_ia = coup_amelio;
+}
 
-                if (Jeu::fin_partie_victoire(grille)) {
-                    std::cout << "Vous avez perdu" << std::endl;
-                }
-            }
-            // REGARDE SI GRILLE REMPLIE
-            if (!Jeu::fin_partie_victoire(grille)){
-                if (Jeu::grille_remplie(grille)) {
-                    std::cout << "Fin du jeu, Il y a égalité";
-                }
-            }
+        grille[case_choisie_ia] = ia.symbol;
+        Jeu::draw_game_board(grille);
 
+        if (Jeu::fin_partie_victoire(grille)) {
+            std::cout << "Vous avez perdu" << std::endl;
+        }
+    }
+
+    // Vérifie si la grille est remplie
+    if (!Jeu::fin_partie_victoire(grille)) {
+        if (Jeu::grille_remplie(grille)) {
+            std::cout << "Fin du jeu, Il y a égalité";
+        }
+    }
+}
         }
     }
 }
 
-} // namespace Jeu
+ // namespace Jeu
