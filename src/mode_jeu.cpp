@@ -97,10 +97,12 @@ void mode_jeu() {
             // FIN PARTIE
             if (!Jeu::fin_partie_victoire(grille)){
                 if (grille_remplie) {
+                    Jeu::draw_game_board(grille);
                     std::cout << "Fin du jeu, Il y a égalité";
                 }
             }
             else {
+                Jeu::draw_game_board(grille);
                 std::cout << "La partie est terminée, " << gagnant << " a gagné" << std::endl;
             }
         
@@ -139,6 +141,7 @@ void mode_jeu() {
             Jeu::draw_game_board(grille);
 
             if (Jeu::fin_partie_victoire(grille)) {
+                Jeu::draw_game_board(grille);
                 std::cout << "Bravo, vous avez gagné " << std::endl;
                 break;
             }
@@ -165,6 +168,7 @@ if(coup_amelio == -1 || grille[coup_amelio] != ' '){
         Jeu::draw_game_board(grille);
 
         if (Jeu::fin_partie_victoire(grille)) {
+            Jeu::draw_game_board(grille);
             std::cout << "Vous avez perdu" << std::endl;
         }
     }
@@ -172,6 +176,7 @@ if(coup_amelio == -1 || grille[coup_amelio] != ' '){
     // Vérifie si la grille est remplie
     if (!Jeu::fin_partie_victoire(grille)) {
         if (Jeu::grille_remplie(grille)) {
+            Jeu::draw_game_board(grille);
             std::cout << "Fin du jeu, Il y a égalité";
         }
     }

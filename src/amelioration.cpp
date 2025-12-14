@@ -32,3 +32,5 @@ namespace Jeu{
     }
 }
 //INCLURE DEPLACER CURSEUR VOIR TP 
+// lettre pr rentrer une case
+// choix autre que 1 ou 2 pr démarrage 
