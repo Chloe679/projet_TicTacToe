@@ -5,7 +5,7 @@
 #include<array>
 
 namespace Jeu{
-const int tab_victoire[8][6] ={
+const int tab_victoire[8][3] ={
     {0,1,2},{3,4,5},{6,7,8}, // lignes
     {0,3,6},{1,4,7},{2,5,8}, // colonnes
     {0,4,8},{2,4,6}           // diagonales

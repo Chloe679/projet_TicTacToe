@@ -31,5 +31,4 @@ namespace Jeu{
         return -1;
     }
 }
-//INCLURE DEPLACER CURSEUR VOIR TP 
-// lettre pr rentrer une case
+
