@@ -20,6 +20,8 @@
         - amélioration.cpp: retourne un indice de case si une amélioration est possible, sinon -1.
         Parcourt le tableau TAB_VICTOIRE[8][3]. Si 2 cases parmis le triplet ont le même symbole --> une amélioration est possible--> renvoie le 3 ème num du triplet = 3 ème case à completer.
 
+        - mode jeu() : lance la partie (démarage + jeu tour à tour en fct du mode + verifictaion condition fin jeu à chaque boucle)
+
 
 ```
 
