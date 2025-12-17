@@ -46,9 +46,12 @@ void mode_jeu() {
 
             // VERIFIER SI LA CASE EST LIBRE
             while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' ') {
-                std::cout << "La case est invalide ";
-                std::cout << play1.name<<" veuillez choisir un numero de case: " << std::endl;
+                std::cout << "La case est invalide. ";
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                std::cout << play1.name <<" veuillez choisir un numero de case: " << std::endl;
                 std::cin >> case_choisie;
+                
                 case_choisie--;
             }
 
@@ -78,8 +81,10 @@ void mode_jeu() {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 // VERIFIER SI LA CASE EST LIBRE
                 while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' ') {
-                    std::cout << "La case est invalide";
-                    std::cout << play2.name<<" veuillez choisir autre numero de case: " << std::endl;
+                    std::cout << "La case est invalide. ";
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    std::cout << play2.name<<", veuillez choisir autre numero de case: " << std::endl;
                     std::cin >> case_choisie;
                     case_choisie--;
                 }
@@ -131,8 +136,10 @@ void mode_jeu() {
             case_choisie--;
 
             while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' ') {
-                std::cout << "La case est invalide ";
-                std::cout <<play1.name <<"veuillez choisir un autre numero de case: " << std::endl;
+                std::cout << "La case est invalide. ";
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                std::cout <<play1.name <<", veuillez choisir un autre numero de case: " << std::endl;
                 std::cin >> case_choisie;
                 case_choisie--;
             }
