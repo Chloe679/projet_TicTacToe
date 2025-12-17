@@ -21,7 +21,7 @@ bool fin_partie_victoire(std::array<char, 9>& grille){ //on prends le tab de la 
     return false;
  
 }
-bool grille_remplie(std::array<char, 9>& grille){ //On regarde si la grille est entierement remplie
+bool grille_remplie(std::array<char, 9>& grille){ 
     for (char c : grille){
         if (c==' '){
             return false;

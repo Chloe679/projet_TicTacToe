@@ -10,7 +10,6 @@ const int tab_victoire[8][3] ={
     {0,4,8},{2,4,6}           // diagonales
     };
 
-//VERSION PAS OPTI // RETOURNE TRUE SI IL Y A UTILISATIONAMELIORATION
 namespace Jeu{
     int amelioration(std::array<char, 9>&grille, Jeu::Player IA){
         for(const auto &v : tab_victoire){

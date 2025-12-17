@@ -4,39 +4,44 @@
 
 ## organisation du code :
 
-```
--src
-        - demarage.cpp : Choix mode duo ou pas ? avec mode_duo(). Return true si oui en demandant à l'utilsateur si il souhaite jouer duo (1) ou solo (2).
+-src - demarage.cpp : Choix du mode de jeu (duo ou non) avec `mode_duo()`.  
+ Retourne `true` si oui, en demandant à l’utilisateur s’il souhaite jouer en duo (1) ou en solo (2).
 
-        - player.cpp : création structure joueur: demande du nom et du choix du signe
+        - player.cpp : Création de la structure joueur : demande du nom et du choix du signe.
 
-        - plateau.cpp : à partir d'un tableau ,affiche une grille de jeu avec fonction: draw_game_board(tab) . Chaque élement du tableau correspond au contenu de la case de le grille (vide initialement).
+        - plateau.cpp : À partir d’un tableau, affiche une grille de jeu avec la fonction `draw_game_board(tab)`.
+        Chaque élément du tableau correspond au contenu d’une case de la grille (vide initialement).
 
-        - fin_partie.cpp : verifie les 2 possibilitées d'une fin de jeu en fonction de l'état de la grille mis en parametre des fonctions. (égalité--> grille_remplie() OU une victoire --> fin_partie_victoire())--> RETURN TRUE SI FIN PARTIE.
-        CAS VICTOIRE : on définit un tabeau TAB_VICTOIRE[8][3] qui répertorit les 8 triplets des indices des cases gagnantes
-        ex: (1,5,9) pour diagonale droite. On vérifie pr chaque triplet, si les cases associées dans notre grille ont le même symbole. Si oui --> VICTOIRE
-        CAS EGALITE: la grille est remplie, sans victoire.
+        - fin_partie.cpp : Vérifie les 2 possibilités de fin de jeu en fonction de l’état de la grille passée en paramètre des fonctions
+        (égalité → `grille_remplie()` OU victoire → `fin_partie_victoire()`) → RETURN TRUE SI FIN DE PARTIE.
 
-        - amélioration.cpp: retourne un indice de case si une amélioration est possible, sinon -1.
-        Parcourt le tableau TAB_VICTOIRE[8][3]. Si 2 cases parmis le triplet ont le même symbole --> une amélioration est possible--> renvoie le 3 ème num du triplet = 3 ème case à completer.
+        CAS VICTOIRE : on définit un tableau `TAB_VICTOIRE[8][3]` qui répertorie les 8 triplets des indices des cases gagnantes.
+        Ex : (1,5,9) pour la diagonale droite. On vérifie, pour chaque triplet, si les cases associées dans notre grille ont le même symbole.
+        Si oui → VICTOIRE.
 
-        - mode jeu() : lance la partie (démarage + jeu tour à tour en fct du mode + verifictaion condition fin jeu à chaque boucle)
+        CAS ÉGALITÉ : la grille est remplie, sans victoire.
 
+        - amelioration.cpp : Retourne un indice de case si une amélioration est possible, sinon -1.
+        Parcourt le tableau `TAB_VICTOIRE[8][3]`. Si 2 cases parmi le triplet ont le même symbole → une amélioration est possible → renvoie le 3e numéro du triplet, correspondant à la 3e case à compléter.
 
-```
-
-##
+        - mode_jeu.cpp : Lance la partie (démarrage + jeu tour à tour en fonction du mode + vérification des conditions de fin de jeu à chaque boucle).
 
 amélioration de l'ia : se fait automatiquement.
 
 ## difficultés rencontrées :
 
-Gérer le cas d'égalité (grille remplie SANS victoire)
-Problème avec le choix du mode de jeu
-Empecher les joueurs d'avoir le même symbole
-Condition de victoire sans parcourir toutes la grille et avoir une mutliplicité de boulce for. Utilisation d'un tableau qui répertorit les composition de victoire. Utile ensuite pour amélioration
-Coup de l'ia sans amélioration, generer un nombre aléatoire et qui est une case libre beaucoup de condition à verifier
-Gérer les cas ou utilisateur rentrent n'impprte quoi (pas un chiffre)
+Gérer le cas d’égalité (grille remplie SANS victoire)
+
+Problème avec le choix du mode de jeu : que doit retourner la fonction de choix ?
+
+Empêcher les joueurs d’avoir le même symbole
+
+Condition de victoire sans parcourir toute la grille et sans multiplier les boucles for.
+Utilisation d’un tableau qui répertorie les combinaisons de victoire, utile ensuite pour l’amélioration
+
+Coup de l’IA sans amélioration : générer un nombre aléatoire correspondant à une case libre, avec beaucoup de conditions à vérifier
+
+Gérer les cas où l’utilisateur rentre n’importe quoi (pas un chiffre)
 
 ```
 

@@ -55,12 +55,12 @@ void mode_jeu() {
                 case_choisie--;
             }
 
-            grille[case_choisie] = play1.symbol; //prends symbole
+            grille[case_choisie] = play1.symbol; //prend symbole
 
             // AFFICHE NV GRILLE
             Jeu::draw_game_board(grille);
 
-            // STOP SI GAGNE
+            // STOP SI VICTOIRE
             if (fin_partie_victoire(grille)) {
                 gagnant = play1.name;
                 break;
@@ -72,14 +72,17 @@ void mode_jeu() {
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // TOUR JOUEUR 2
+            ////////////////////////////////////////////////////////////////////////////////////////
+
             if (!Jeu::fin_partie_victoire(grille) && !Jeu::grille_remplie(grille)) {
 
                 std::cout << play2.name << " (" << play2.symbol << ") - choisissez une case (1-9) : ";
                 std::cin >> case_choisie;
                 case_choisie--;
 
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                // VERIFIER SI LA CASE EST LIBRE
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // VERIFIER SI LA CASE EST LIBRE
+            //////////////////////////////////////////
                 while (case_choisie < 0 || case_choisie >= 9 || grille[case_choisie] != ' ') {
                     std::cout << "La case est invalide. ";
                     std::cin.clear();
@@ -100,6 +103,7 @@ void mode_jeu() {
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // FIN PARTIE
+            /////////////////////////////////////////////////////////////////////////////////////////////
             if (!Jeu::fin_partie_victoire(grille)){
                 if (grille_remplie) {
                     Jeu::draw_game_board(grille);
@@ -128,7 +132,7 @@ void mode_jeu() {
         std::array<char, 9> grille = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
         Jeu::draw_game_board(grille); //affiche grille vide au début
 
-        // DEBUT JEU
+//////////////////////////////////// DEBUT JEU///////////////////////////////////////////////////////////////////
 
         while (!Jeu::fin_partie_victoire(grille) && !Jeu::grille_remplie(grille)) {
             std::cout << play1.name << " (" << play1.symbol << ") - choisissez une case (1-9) : ";
@@ -152,13 +156,13 @@ void mode_jeu() {
                 std::cout << "Bravo, vous avez gagné " << std::endl;
                 break;
             }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TOUR IA
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // TOUR IA
     if (!Jeu::fin_partie_victoire(grille) && !Jeu::grille_remplie(grille)) {
         std::cout << "Tour de l'IA" << std::endl;
 
-        // Utiliser variable locale coup_amelio
         int coup_amelio = Jeu::amelioration(grille, ia);
 
        
@@ -192,4 +196,4 @@ if(coup_amelio == -1 || grille[coup_amelio] != ' '){
     }
 }
 
- // namespace Jeu
+ 
