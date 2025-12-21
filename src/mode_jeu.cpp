@@ -66,7 +66,7 @@ void mode_jeu() {
                 break;
             }
             if (grille_remplie(grille)) {
-                std::cout << "égalite";
+                std::cout << "égalite"<<std::endl;
                 break;
             }
 
@@ -188,7 +188,7 @@ if(coup_amelio == -1 || grille[coup_amelio] != ' '){
     if (!Jeu::fin_partie_victoire(grille)) {
         if (Jeu::grille_remplie(grille)) {
             Jeu::draw_game_board(grille);
-            std::cout << "Fin du jeu, Il y a égalité";
+            std::cout << "Fin du jeu, Il y a égalité"<<std::endl;
         }
     }
 }

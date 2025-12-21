@@ -4,7 +4,8 @@
 
 ## organisation du code :
 
--src - demarage.cpp : Choix du mode de jeu (duo ou non) avec `mode_duo()`.  
+-src  
+ - demarage.cpp : Choix du mode de jeu (duo ou non) avec `mode_duo()`.  
  Retourne `true` si oui, en demandant à l’utilisateur s’il souhaite jouer en duo (1) ou en solo (2).
 
         - player.cpp : Création de la structure joueur : demande du nom et du choix du signe.
