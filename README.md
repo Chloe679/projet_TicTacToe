@@ -1,31 +1,32 @@
 # Projet TicTacToe
 
-## Description
+### Description
 
 ## organisation du code :
 
--src  
- - demarage.cpp : Choix du mode de jeu (duo ou non) avec `mode_duo()`.  
- Retourne `true` si oui, en demandant à l’utilisateur s’il souhaite jouer en duo (1) ou en solo (2).
+-src
 
-        - player.cpp : Création de la structure joueur : demande du nom et du choix du signe.
+         - demarage.cpp : Choix du mode de jeu (duo ou non) avec `mode_duo()`.
+         Retourne `true` si oui, en demandant à l’utilisateur s’il souhaite jouer en duo (1) ou en solo (2).
 
-        - plateau.cpp : À partir d’un tableau, affiche une grille de jeu avec la fonction `draw_game_board(tab)`.
-        Chaque élément du tableau correspond au contenu d’une case de la grille (vide initialement).
+         - player.cpp : Création de la structure joueur : demande du nom et du choix du signe.
 
-        - fin_partie.cpp : Vérifie les 2 possibilités de fin de jeu en fonction de l’état de la grille passée en paramètre des fonctions
-        (égalité → `grille_remplie()` OU victoire → `fin_partie_victoire()`) → RETURN TRUE SI FIN DE PARTIE.
+         - plateau.cpp : À partir d’un tableau, affiche une grille de jeu avec la fonction `draw_game_board(tab)`.
+         Chaque élément du tableau correspond au contenu d’une case de la grille (vide initialement).
 
-        CAS VICTOIRE : on définit un tableau `TAB_VICTOIRE[8][3]` qui répertorie les 8 triplets des indices des cases gagnantes.
-        Ex : (1,5,9) pour la diagonale droite. On vérifie, pour chaque triplet, si les cases associées dans notre grille ont le même symbole.
-        Si oui → VICTOIRE.
+         - fin_partie.cpp : Vérifie les 2 possibilités de fin de jeu en fonction de l’état de la grille passée en paramètre des fonctions
+         (égalité → `grille_remplie()` OU victoire → `fin_partie_victoire()`) → RETURN TRUE SI FIN DE PARTIE.
 
-        CAS ÉGALITÉ : la grille est remplie, sans victoire.
+         CAS VICTOIRE : on définit un tableau `TAB_VICTOIRE[8][3]` qui répertorie les 8 triplets des indices des cases gagnantes.
+         Ex : (1,5,9) pour la diagonale droite. On vérifie, pour chaque triplet, si les cases associées dans notre grille ont le même symbole.
+         Si oui → VICTOIRE.
 
-        - amelioration.cpp : Retourne un indice de case si une amélioration est possible, sinon -1.
-        Parcourt le tableau `TAB_VICTOIRE[8][3]`. Si 2 cases parmi le triplet ont le même symbole → une amélioration est possible → renvoie le 3e numéro du triplet, correspondant à la 3e case à compléter.
+         CAS ÉGALITÉ : la grille est remplie, sans victoire.
 
-        - mode_jeu.cpp : Lance la partie (démarrage + jeu tour à tour en fonction du mode + vérification des conditions de fin de jeu à chaque boucle).
+         - amelioration.cpp : Retourne un indice de case si une amélioration est possible, sinon -1.
+         Parcourt le tableau `TAB_VICTOIRE[8][3]`. Si 2 cases parmi le triplet ont le même symbole → une amélioration est possible → renvoie le 3e numéro du triplet, correspondant à la 3e case à compléter.
+
+         - mode_jeu.cpp : Lance la partie (démarrage + jeu tour à tour en fonction du mode + vérification des conditions de fin de jeu à chaque boucle).
 
 amélioration de l'ia : se fait automatiquement.
 
